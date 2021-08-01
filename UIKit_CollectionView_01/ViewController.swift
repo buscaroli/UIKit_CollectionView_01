@@ -35,13 +35,16 @@ class ViewController: UIViewController, UICollectionViewDataSource {
     
     // how many cells? usually you would count the number from a data structure such as an array
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return 200
     }
     
     // what do you want inside the cells?
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // you'll need to register the identifier within viewDidLoad() with collectionView.register()
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as! CustomCollectionViewCell
+        // in order to be able to call .configure we need to cast down the cell with
+        // as! CustomCollectionViewCell (line above)
+        cell.configure(label: "Leaf \(indexPath.row + 1)")
         
         return cell
     }

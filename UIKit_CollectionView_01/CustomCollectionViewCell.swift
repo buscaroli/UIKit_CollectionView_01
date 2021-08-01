@@ -15,7 +15,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.sizeToFit()
         imageView.image = UIImage(systemName: "leaf")
-        imageView.backgroundColor = .systemYellow
+//        imageView.backgroundColor = .systemYellow
         
         return imageView
     }()
@@ -23,7 +23,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     private let customLabel: UILabel = {
         let label = UILabel()
         label.text = "Leaf"
-        label.backgroundColor = .systemTeal
+//        label.backgroundColor = .systemTeal
         label.textAlignment = .center
         
         return label
@@ -63,4 +63,15 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
     }
     
+    // customizine the views, in this case just the label but could be done for the image as well
+    public func configure(label: String) {
+        customLabel.text = label
+    }
+    
+    // resets each cell when it is dequeued by the collection view. I am not completely sure
+    // why it is needed as the view looked alright even without it ?!?
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        customLabel.text = nil
+    }
 }
