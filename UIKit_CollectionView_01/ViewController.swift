@@ -19,9 +19,9 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         // always remove some pixel (here 1 and 2) in order to be able to display the
         // wanted number of cells side by side
         layout.itemSize = CGSize(width: view.frame.size.width / 4 - 1, height: view.frame.size.width / 4 - 2)
-        // horizontal gap between cells
+        // vertical gap between cells (with horizontal flow)
         layout.minimumLineSpacing = 1
-        // vertical gap between cells
+        // horizontal gap between cells (with horizontal flow)
         layout.minimumInteritemSpacing = 1
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
